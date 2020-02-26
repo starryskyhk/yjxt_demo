@@ -1,6 +1,7 @@
 server:
   port: 8080
   servlet:
+    #项目路径
     context-path: /yjxt
 spring:
   datasource:
@@ -31,5 +32,7 @@ mybatis-plus:
   type-aliases-package: com.wnsf.yjxt.sys.entry
   configuration:
     auto-mapping-behavior: full
+    #默认打印SQL语句使用的日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #扫描xml
   mapper-locations: classpath:mapper/*.xml
