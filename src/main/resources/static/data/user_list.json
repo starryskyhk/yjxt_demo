@@ -1,0 +1,33 @@
+{
+  "msg": "请求成功",
+  "total": 2,
+  "code": 0,
+  "rows": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "6f89a35fca3ed82005e9ec4ddabc8226",
+      "salt": "98C69A2446384F22B5EFC7874095AC69",
+      "email": "admin@126.com",
+      "mobile": "13800000000",
+      "deptId": null,
+      "status": 0,
+      "deleted": 0,
+      "createTime": "2019-11-05 23:03:24",
+      "updateTime": "2019-11-05 23:04:16"
+    },
+    {
+      "id": 2,
+      "username": "jack",
+      "password": "6f89a35fca3ed82005e9ec4ddabc8226",
+      "salt": "98C69A2446384F22B5EFC7874095AC69",
+      "email": "jack@139.com",
+      "mobile": "18959139189",
+      "deptId": 1,
+      "status": 0,
+      "deleted": 0,
+      "createTime": "2019-10-30 01:05:10",
+      "updateTime": "2019-10-30 15:26:37"
+    }
+  ]
+}
