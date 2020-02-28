@@ -1,0 +1,38 @@
+server:
+  port: 8080
+  servlet:
+    #项目路径
+    context-path: /yjxt
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/yjxt?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+      #   数据源其他配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,log4j2
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+mybatis-plus:
+  #配置别名
+  type-aliases-package: com.wnsf.yjxt.sys.entry
+  configuration:
+    auto-mapping-behavior: full
+    #默认打印SQL语句使用的日志
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    #扫描xml
+  mapper-locations: classpath:mapper/*.xml

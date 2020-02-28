@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>首页 - 光年(Light Year Admin)后台管理系统模板</title>
+		<link rel="icon" href="favicon.ico" type="image/ico">
+		<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+		<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+		<meta name="author" content="yinqi">
+		<link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<link href="css/materialdesignicons.min.css" th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
+		<link href="css/style.min.css" rel="stylesheet" th:href="@{/css/style.min.css}">
+	</head>
+
+	<body>
+		<div class="container-fluid p-t-15">
+
+			<div class="row">
+				<div class="col-sm-6 col-md-3">
+					<div class="card bg-success">
+						<div class="card-body clearfix">
+							<div class="pull-right">
+								<p class="h6 text-white m-t-0">学生总数</p>
+								<p class="h3 text-white m-b-0">25,201</p>
+							</div>
+							<div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-arrow-down-bold fa-1-5x"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card bg-warning">
+						<div class="card-body clearfix">
+							<div class="pull-right">
+								<p class="h6 text-white m-t-0">学业预警</p>
+								<p class="h3 text-white m-b-0">123</p>
+							</div>
+							<div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-currency-cny fa-1-5x"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card bg-pink">
+						<div class="card-body clearfix">
+							<div class="pull-right">
+								<p class="h6 text-white m-t-0">留级预警</p>
+								<p class="h3 text-white m-b-0">340</p>
+							</div>
+							<div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-account fa-1-5x"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card bg-danger">
+						<div class="card-body clearfix">
+							<div class="pull-right">
+								<p class="h6 text-white m-t-0">退学</p>
+								<p class="h3 text-white m-b-0">15</p>
+							</div>
+							<div class="pull-left"> <span class="img-avatar img-avatar-48 bg-translucent"><i class="mdi mdi-comment-outline fa-1-5x"></i></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<h4>学生分布</h4>
+						</div>
+						<div class="card-body">
+							<canvas class="js-chartjs-bars"></canvas>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" th:src="@{/js/bootstrap.min.js}"></script>
+		<script type="text/javascript" src="js/main.min.js" th:src="@{/js/main.min.js}"></script>
+
+		<!--图表插件-->
+		<script type="text/javascript" src="js/Chart.js" th:src="@{js/Chart.js}"></script>
+		<script type="text/javascript">
+			$(document).ready(function(e) {
+				var $dashChartBarsCnt = jQuery('.js-chartjs-bars')[0].getContext('2d');
+
+				var $dashChartBarsData = {
+					labels: ['计算机学院', '马克思主义学院', '外国语学院', '美术学院', '音乐学院',
+						'人文学院', '传媒学院', '经济与管理学院', '体育学院', '环境与生命科学学院',
+						'化学与材料学院', '教育科学学院', '数学与统计学院', '物理与电气工程学院'
+					],
+					datasets: [{
+						label: '学院总人数',
+						borderWidth: 1,
+						borderColor: 'rgba(0,0,0,0)',
+						backgroundColor: 'rgba(51,202,185,0.5)',
+						hoverBackgroundColor: "rgba(51,202,185,0.7)",
+						hoverBorderColor: "rgba(0,0,0,0)",
+						data: [12, 32, 48, 25, 15, 12, 32, 48, 12, 32, 48, 35, 15, 19]
+					}]
+				};
+
+				new Chart($dashChartBarsCnt, {
+					type: 'bar',
+					data: $dashChartBarsData
+				});
+
+			});
+		</script>
+	</body>
+</html>

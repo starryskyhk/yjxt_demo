@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<title>bootstrap-table - 光年(Light Year Admin)后台管理系统模板</title>
+		<link rel="icon" href="favicon.ico" type="image/ico">
+		<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+		<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+		<meta name="author" content="yinqi">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/materialdesignicons.min.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<link href="css/style.min.css" rel="stylesheet">
+		<link href="js/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+
+	</head>
+	<body>
+		
+		
+		<div class="container-fluid p-t-15">
+		  
+
+		
+		
+		<div class="col-lg-12">
+		  <div class="card">
+		    <div class="card-header">
+				<h4>各学院预警列表</h4>
+			        </div>
+		    <div class="card-body">
+				<form id="toolbar"  class="form-inline">
+					<div class="form-group" >
+						<select class="form-control" id="example-select" name="example-select" size="1">
+							<option value="0">请选择年级</option>
+							<option value="-1">大一</option>
+							<option value="1">大二</option>
+							<option value="2">大三</option>
+							<option value="3">大四</option>
+						</select>
+					</div>
+					<div class="form-group" >
+						<select class="form-control" id="example-select" name="example-select" size="1">
+							<option value="0">请选择专业</option>
+							<option value="-1">大一</option>
+							<option value="1">大二</option>
+							<option value="2">大三</option>
+							<option value="3">大四</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select class="form-control" id="example-select" name="example-select" size="1">
+							<option value="0">请选择预警类型</option>
+							<option value="-1">所有预警类型</option>
+							<option value="1">学业预警</option>
+							<option value="2">留级预警</option>
+							<option value="3">退学</option>
+						</select>
+					</div>
+					<div class="form-group">
+					  <button class="btn btn-label btn-primary btn-sm"> 确认提交</button>
+					</div>
+					<div class="btn-group">
+					  <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown"  data-toggle="tooltip" data-placement="top" title="点击可以选中导出的格式"aria-haspopup="true" aria-expanded="false">
+					    导出 <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu">
+					    <li><a href="#!">明细表</a></li>
+					    <li><a href="#!">统计表</a></li>
+					  </ul>
+					</div>
+					<div class="btn-group">
+					  <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					    导入 <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu">
+					    <li><a href="#!">学生数据</a></li>
+					
+					  </ul>
+					</div>
+				</form>
+		      <table id="tb_departments"></table>
+				 
+		    </div>
+		  </div>
+		</div>
+			
+			
+
+					
+					
+		  </div>
+		</div>
+
+		
+						
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/layer.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-table/bootstrap-table.js"></script>
+<script type="text/javascript" src="js/bootstrap-table/bootstrap-table-zh-CN.min.js"></script>
+<!--消息提示-->
+<!-- 		<script src="js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="js/lightyear.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script> -->
+<!--行内编辑插件-->
+<link href="js/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.min.css" rel="stylesheet">
+<script type="text/javascript" src="js/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js"></script>
+<!-- 表格 -->
+<script type="text/javascript" src="js/Chart.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script>
+<script type="text/javascript">
+		var list_url='./data/user_list.json';
+		var dataTable = $('#tb_departments').bootstrapTable({
+				classes: 'table table-bordered table-hover table-striped',
+		        url: list_url,                      //  请求后台的URL
+		        method: "get",                      //  请求方式
+		        uniqueId: "id",                     //  每一行的唯一标识，一般为主键列
+		        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+		        pagination: true,                   //  是否显示分页
+		        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+		        pageSize: 10,                       //  每页的记录行数
+				//showColumns: true,         // 是否显示所有的列
+				//showRefresh: true,         // 是否显示刷新按钮
+				toolbar: '#toolbar',       // 工具按钮容器
+				 sidePagination: "server",            // 分页方式：client客户端分页，server服务端分页
+				 pageNumber: 1,                       // 初始化加载第一页，默认第一页
+				 pageSize: 10,                        // 每页的记录行数
+				 pageList: [10, 25, 50, 100],         // 可供选择的每页的行数
+			//	 search: true,                      // 是否显示表格搜索，此搜索是客户端搜索
+		        queryParamsType: '',
+		        queryParams: function (param) {
+		            return {
+		                pageNum: param.pageNumber,
+		                pageSize: param.pageSize,
+		                username: $("#username").val()
+		            }
+		        },
+		        columns: [
+				{
+				    field: 'check',
+				    checkbox: true
+				}, {
+		            field: 'username',
+		            title: '学院名'
+		        }, {
+		            field: 'email',
+		            title: '邮箱'
+		        }, {
+		            field: 'mobile',
+		            title: '手机号'
+		        }, {
+		            field: 'createTime',
+		            title: '预警类型'
+		        },{
+					field: 'operate',
+					title: '操作',
+					formatter: btnGroup,  // 自定义方法
+					events: {
+						'click .edit-btn': function (event, value, row, index) {
+							editUser(row.id);
+						},
+						'click .del-btn': function (event, value, row, index) {
+							delUser(row.id);
+						}
+					}
+				},
+				]
+		    });
+		
+		// 修改
+		$('#btn-update').click(function () {
+			var rows = $('#tb_departments').bootstrapTable('getSelections');
+			if (rows.length == 0) {
+			   layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
+			} else if (rows.length != 1) {
+			   layer.msg("一次只能修改一条数据!", {icon: 2, time: 1000, offset: 't'})
+			} else {
+				window.location.href = 'role_update.html';
+			}
+		});
+		//删除
+		function deleteRole(){
+			var rows = $('#tb_departments').bootstrapTable('getSelections');
+			if (rows.length == 0) {
+			   layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
+			} else if (rows.length == 1) {
+			   layer.confirm("确认删除?", {icon: 3, offset: 't'}, function () {
+				   //异步删除一条
+				  alert(rows[0].id);
+			   })
+			} else {
+				layer.confirm("确认批量删除?", {icon: 3, offset: 't'}, function () {
+				    var ids = new Array();
+					for (var i = 0; i < rows.length; i++) {
+					    ids.push(rows[i].id);
+					}
+					alert(JSON.stringify(ids));
+				})
+			}
+		};
+		// 分配角色
+		    $('#btn-assign-resource').click(function () {
+		        var rows = $('#tb_departments').bootstrapTable('getSelections');
+		        if (rows.length == 0) {
+		            layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
+		        } else if (rows.length != 1) {
+		            layer.msg("一次只能修改一条数据!", {icon: 2, time: 1000, offset: 't'})
+		        } else {
+		            window.location.href = 'assgin_role.html';
+		        }
+		    });
+		
+		// 操作按钮
+		function btnGroup ()
+		{
+		    let html =
+		        '<a href="#!" class="btn btn-xs btn-default m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
+		        '<a href="#!" class="btn btn-xs btn-default del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>';
+		    return html;
+		}
+		
+		// 操作方法 - 编辑
+		function editUser(id)
+		{
+		    alert('编辑信息跳转'+id);
+			
+		}
+		// 操作方法 - 删除
+		function delUser(id)
+		{
+		    alert('信息删除成功'+id);
+		}
+		
+		
+		
+		new Chart($("#chart-hbar-2"), {
+		    type: 'horizontalBar',
+		    data: {
+		        labels: ["人文学院", "外国语学院", "教育科学学院", "马克思主义学院", "经济与管理学院",
+				 "数学与统计学院", "物理与电气工程学院","化学与材料学院","环境与生命科学学院","计算机学院",
+				 "音乐学院","美术学院","传媒学院","莫斯科艺术学院","体育学院","继续教育学院"],
+		        datasets: [{
+		            label: "收入",
+		            backgroundColor: "rgba(51,202,185,0.5)",
+		            borderColor: "rgba(0,0,0,0)",
+		            hoverBackgroundColor: "rgba(51,202,185,0.7)",
+		            hoverBorderColor: "rgba(0,0,0,0)",
+		            data: [10, 59, 80, 58, 20, 55, 40]
+		        },
+		        {
+		            label: "支出",
+		            backgroundColor: "rgba(243,245,246,0.8)",
+		            borderColor: "rgba(0,0,0,0)",
+		            hoverBackgroundColor: "rgba(238,239,240,1)",
+		            hoverBorderColor: "rgba(0,0,0,0)",
+		            data: [28, 48, 40, 19, 86, 27, 90]
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            xAxes: [{
+		                ticks: {
+		                    beginAtZero: true
+		                }
+		            }]
+		        }
+		    }
+		});
+		
+		
+		new Chart($("#chart-vbar-2"), {
+		    type: 'bar',
+		    data: {
+		        labels: ["人文学院", "外国语学院", "教育科学学院", "马克思主义学院", "经济与管理学院",
+				 "数学与统计学院", "物理与电气工程学院","化学与材料学院","环境与生命科学学院","计算机学院",
+				 "音乐学院","美术学院","传媒学院","莫斯科艺术学院","体育学院","继续教育学院"],
+		        datasets: [{
+		            label: "收入",
+		            backgroundColor: "rgba(51,202,185,0.5)",
+		            borderColor: "rgba(0,0,0,0)",
+		            hoverBackgroundColor: "rgba(51,202,185,0.7)",
+		            hoverBorderColor: "rgba(0,0,0,0)",
+		            data: [10, 59, 80, 58, 20, 55, 40]
+		        },
+		        {
+		            label: "支出",
+		            backgroundColor: "rgba(243,245,246,0.8)",
+		            borderColor: "rgba(0,0,0,0)",
+		            hoverBackgroundColor: "rgba(238,239,240,1)",
+		            hoverBorderColor: "rgba(0,0,0,0)",
+		            data: [28, 48, 40, 19, 86, 27, 90]
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero: true
+		                }
+		            }]
+		        }
+		    }
+		});
+		
+		</script>
+		
+	</body>
+</html>
