@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>首页 - 光年(Light Year Admin)后台管理系统模板</title>
+<title>渭南师范学院学业预警系统</title>
 <link rel="icon" href="favicon.ico" type="image/ico">
-<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
-<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+<meta name="keywords" content="学业预警系统">
+<meta name="description" content="学业预警系统">
 <meta name="author" content="yinqi">
 <link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 <link href="css/materialdesignicons.min.css" th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
@@ -22,7 +22,7 @@
       
       <!-- logo -->
       <div id="logo" class="sidebar-header">
-        <a href="index.html"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
+        <a href="index.html" th:href="@{/}"><img src="images/logo-sidebar.png" title="LightYear" alt="LightYear" /></a>
       </div>
       <div class="lyear-layout-sidebar-scroll"> 
         
@@ -39,7 +39,7 @@
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> <span>预警列表</span></a>
               <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="warning/warning_list_college.html">各学院预警情况</a> </li>
+                <li> <a class="multitabs" th:href="@{/sys/warning-info/list}">各学院预警情况</a> </li>
 				<li> <a class="multitabs" href="warning/warning_list_grade.html">各年纪预警情况</a> </li>
 				<li> <a class="multitabs" href="warning/warning_list_this.html">本学院预警情况</a> </li>
               </ul>
@@ -82,9 +82,7 @@
           </ul>
         </nav>
         
-        <div class="sidebar-footer">
-          <p class="copyright">Copyright &copy; 2019. <a target="_blank" href="http://lyear.itshubao.com">IT书包</a> All rights reserved.</p>
-        </div>
+
       </div>
       
     </aside>
@@ -108,7 +106,7 @@
             <li class="dropdown dropdown-profile">
               <a href="javascript:void(0)" data-toggle="dropdown">
                 <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" th:src="@{/images/users/avatar.jpg}" alt="笔下光年" />
-                <span>笔下光年 <span class="caret"></span></span>
+                <span>这是用户名<span class="caret"></span></span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li> <a class="multitabs" data-url="lyear_pages_profile.html" href="javascript:void(0)"><i class="mdi mdi-account"></i> 个人信息</a> </li>

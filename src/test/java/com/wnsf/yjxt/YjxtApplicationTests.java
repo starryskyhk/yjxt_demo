@@ -4,7 +4,9 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
 import com.wnsf.yjxt.sys.entity.Major;
+import com.wnsf.yjxt.sys.entity.StudentInfo;
 import com.wnsf.yjxt.sys.service.IMajorService;
+import com.wnsf.yjxt.sys.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,6 +46,13 @@ public class YjxtApplicationTests {
        majorService.saveBatch(majors);
 
 
+    }
+    @Autowired
+    private IUserService userService;
+    @Test
+    public void test(){
+        List<StudentInfo> studentInfo = userService.getStudentInfo();
+        System.out.println(studentInfo);
     }
 
 }

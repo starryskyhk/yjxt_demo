@@ -1,7 +1,11 @@
 package com.wnsf.yjxt.sys.mapper;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.wnsf.yjxt.sys.entity.StudentInfo;
 import com.wnsf.yjxt.sys.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface UserMapper extends BaseMapper<User> {
 
+    List<StudentInfo> selectStudentInfo(Wrapper wrapper);
 }

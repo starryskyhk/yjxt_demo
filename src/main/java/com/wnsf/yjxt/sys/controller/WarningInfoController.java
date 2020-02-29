@@ -1,9 +1,16 @@
 package com.wnsf.yjxt.sys.controller;
 
 
+import com.wnsf.yjxt.common.model.R;
+import com.wnsf.yjxt.sys.entity.StudentInfo;
+import com.wnsf.yjxt.sys.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * <p>
@@ -16,12 +23,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/sys/warning-info")
 public class WarningInfoController {
+
+    @Autowired
+    private IUserService userService;
+
+
     //跳转到学院预警列表
     @GetMapping("list")
     public String list(){
         return "warning/warning_list_college";
     }
 
+    //获取预警学生列表
+    @GetMapping("data")
+    @ResponseBody
+    public R data(){
+        List<StudentInfo> studentInfo = userService.getStudentInfo();
+        int size = studentInfo.size();
+
+//        }
+
+
+
+        return R.ok().put("total", size).put("rows",studentInfo);
+    }
 
 
 }

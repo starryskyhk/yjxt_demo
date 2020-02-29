@@ -111,24 +111,28 @@
 <!-- 表格 -->
 <script type="text/javascript" th:src="@{/js/Chart.js}"></script>
 <script type="text/javascript" th:src="@{/js/main.min.js}"></script>
-<script type="text/javascript">
-		var list_url='./data/user_list.json';
+<script type="text/javascript" th:inline="javascript">
+		var list_url=/*[[@{/sys/warning-info/data}]]*/;
+
 		var dataTable = $('#tb_departments').bootstrapTable({
 				classes: 'table table-bordered table-hover table-striped',
-		        url: list_url,                      //  请求后台的URL
+		        url: list_url,       //  请求后台的URL
 		        method: "get",                      //  请求方式
 		        uniqueId: "id",                     //  每一行的唯一标识，一般为主键列
 		        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
 		        pagination: true,                   //  是否显示分页
 		        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
 		        pageSize: 10,                       //  每页的记录行数
+				striped: true,                      //是否显示行间隔色
+				showRefresh: true,   //是否显示刷新
+				clickToSelect: false, //是否启用点击选中行
+				showToggle: true,//是否显示详细列表
+				search: true,   //是否显示表格搜索
 				sortable:true,     //是否排序
 				//showColumns: true,         // 是否显示所有的列
 				//showRefresh: true,         // 是否显示刷新按钮
 				toolbar: '#toolbar',       // 工具按钮容器
-				 sidePagination: "server",            // 分页方式：client客户端分页，server服务端分页
 				 pageNumber: 1,                       // 初始化加载第一页，默认第一页
-				 pageSize: 10,                        // 每页的记录行数
 				 pageList: [10, 25, 50, 100],         // 可供选择的每页的行数
 			//	 search: true,                      // 是否显示表格搜索，此搜索是客户端搜索
 		        queryParamsType: '',
@@ -136,17 +140,18 @@
 		            return {
 		                pageNum: param.pageNumber,
 		                pageSize: param.pageSize,
-		                collegeName:
+		                // collegeName:
 		            }
 		        },
 		        columns: [
-					{field:'userId',checkbox:true},
+					{checkbox:true},
 					{field:'collegeName',title:'学院',align:'center',sortable:true},
 					{field:'majorName',title:'专业',align:'center',sortable:true},
 					{field:'className',title:'班级',align:'center',sortable:true},
 					{field:'year',title:'年级',align:'center',sortable:true},
-					{field:'username',title:'姓名',align:'center',sortable:true},
 					{field:'userId',title:'学号',align:'center',sortable:true},
+					{field:'username',title:'姓名',align:'center',sortable:true},
+					{field:'sex',title:'性别',align:'center',sortable:true},
 					{field:'type',title:'预警类型',align:'center',sortable:true},
 				{
 					field: 'operate',
