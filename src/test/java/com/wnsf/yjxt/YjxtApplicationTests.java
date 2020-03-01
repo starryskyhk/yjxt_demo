@@ -3,8 +3,10 @@ package com.wnsf.yjxt;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.poi.excel.ExcelReader;
 import cn.hutool.poi.excel.ExcelUtil;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wnsf.yjxt.sys.entity.Major;
-import com.wnsf.yjxt.sys.entity.StudentInfo;
+import com.wnsf.yjxt.sys.entity.User;
 import com.wnsf.yjxt.sys.service.IMajorService;
 import com.wnsf.yjxt.sys.service.IUserService;
 import org.junit.jupiter.api.Test;
@@ -51,8 +53,24 @@ public class YjxtApplicationTests {
     private IUserService userService;
     @Test
     public void test(){
-        List<StudentInfo> studentInfo = userService.getStudentInfo();
-        System.out.println(studentInfo);
+        QueryWrapper query=new QueryWrapper();
+        Page<User> page=new Page<User>();
+        query.like("college_id", "1");
+        Page<User> userPage = userService.getStudentInfo(page, query);
+        List<User> records = userPage.getRecords();
+        System.out.println(records);
+    }
+
+    @Test
+    public void test02(){
+        Page<User> page=new Page<User>();
+        page.setCurrent(1);
+        page.setSize(10);
+        Page<User> page1 = userService.page(page);
+
+        System.out.println(page1.getRecords());
+
+
     }
 
 }

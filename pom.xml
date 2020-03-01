@@ -67,6 +67,13 @@
             <artifactId>mybatis-plus-generator</artifactId>
             <version>3.3.1.tmp</version>
         </dependency>
+        <!--mybatis的loaclDate问题-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-typehandlers-jsr310</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+
         <!--freemaker依赖-->
         <dependency>
             <groupId>org.freemarker</groupId>
@@ -77,7 +84,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
-            <version>1.1.20</version>
+            <version>1.1.21</version>
         </dependency>
         <!--mysql驱动-->
         <dependency>

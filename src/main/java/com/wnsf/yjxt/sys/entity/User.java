@@ -1,11 +1,13 @@
 package com.wnsf.yjxt.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.time.LocalDateTime;
-import java.io.Serializable;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -13,7 +15,7 @@ import lombok.experimental.Accessors;
  * </p>
  *
  * @author 韩坤
- * @since 2020-02-26
+ * @since 2020-03-01
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -68,7 +70,23 @@ public class User implements Serializable {
      */
     private LocalDateTime updateTime;
 
+    /**
+     * 学院id,为空则为超级管理员的
+     */
+    private Integer collegeId;
+    private Integer majorId;
     private Integer classId;
+    @TableField(exist = false)
+    private String collegeName;
+    @TableField(exist = false)
+    private String majorName;
+    @TableField(exist = false)
+    private String className;
+    @TableField(exist = false)
+    private String year;
+    @TableField(exist = false)
+    private String type;
+
 
 
 }

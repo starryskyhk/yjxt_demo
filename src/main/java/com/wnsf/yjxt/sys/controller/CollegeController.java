@@ -1,10 +1,9 @@
 package com.wnsf.yjxt.sys.controller;
 
 
-import com.wnsf.yjxt.sys.service.ICollegeService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
@@ -12,16 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * </p>
  *
  * @author 韩坤
- * @since 2020-02-26
+ * @since 2020-03-01
  */
-@Controller
+@RestController
 @RequestMapping("/sys/college")
 public class CollegeController {
-    @Autowired
-    ICollegeService collegeService;
-    @RequestMapping("hello")
-    public String hello(){
-        return "index";
-    }
 
 }
