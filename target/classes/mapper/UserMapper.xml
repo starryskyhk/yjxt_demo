@@ -2,20 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wnsf.yjxt.sys.mapper.UserMapper">
 
-    <select id="selectStudentInfo" resultType="com.wnsf.yjxt.sys.entity.StudentInfo">
+    <select id="selectStudentInfo" resultType="com.wnsf.yjxt.sys.entity.User">
         SELECT
-            findCnameByCno (college_id) AS 'college_name',
-            findMnameByClid (class_id) AS 'major_name',
-            findClnameByClno(class_id) AS 'class_name',
-            findYearByClno(class_id) AS 'year',
-            user_id AS 'user_id',
-            sex AS 'sex',
-            username AS 'username',
-            findWtypeById(user_id) AS 'type'
-        FROM
-            sys_user
-        WHERE
-            college_id = 1 <!--AND findWtypeById(user_id) != null-->
-       <!-- ${ew.customSqlSegment}-->
+        *from student_info
+        ${ew.customSqlSegment}
     </select>
 </mapper>

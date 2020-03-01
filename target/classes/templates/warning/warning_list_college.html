@@ -3,10 +3,10 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<title>bootstrap-table - 光年(Light Year Admin)后台管理系统模板</title>
+		<title>预警列表</title>
 		<link rel="icon" href="favicon.ico" type="image/ico">
-		<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
-		<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+		<meta name="keywords" content="预警列表">
+		<meta name="description" content="预警列表">
 		<meta name="author" content="yinqi">
 		<link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 		<link href="css/materialdesignicons.min.css" th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
@@ -27,7 +27,23 @@
 		  <div class="card">
 		    <div class="card-header">
 				<h4>各学院预警列表</h4>
-			        </div>
+			</div>
+			  <form id="searchform" method="get">
+			 <div class="form-group" >
+				学院号<input type="text" name="college_id">
+				专业号<input type="text" name="major_id">
+				班级号<input type="text" name="class_id"><br>
+				学号<input type="text" name="user_id">
+				姓名<input type="text" name="username">
+				年级<input type="text" name="year"><br>
+				预警类型<input type="text" name="type">
+				<button type="button" id="search" value="提交">提交</button>
+			 </div>
+			  </form>
+
+
+
+
 		    <div class="card-body">
 				<form id="toolbar"  class="form-inline">
 					<div class="form-group" >
@@ -37,24 +53,6 @@
 							<option value="1">大二</option>
 							<option value="2">大三</option>
 							<option value="3">大四</option>
-						</select>
-					</div>
-					<div class="form-group" >
-						<select class="form-control" id="major_select" name="example-select" size="1">
-							<option value="0">请选择专业</option>
-							<option value="-1">大一</option>
-							<option value="1">大二</option>
-							<option value="2">大三</option>
-							<option value="3">大四</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<select class="form-control" id="warnning-select" name="example-select" size="1">
-							<option value="0">请选择预警类型</option>
-							<option value="-1">所有预警类型</option>
-							<option value="1">学业预警</option>
-							<option value="2">留级预警</option>
-							<option value="3">退学</option>
 						</select>
 					</div>
 					<div class="form-group">
@@ -112,7 +110,24 @@
 <script type="text/javascript" th:src="@{/js/Chart.js}"></script>
 <script type="text/javascript" th:src="@{/js/main.min.js}"></script>
 <script type="text/javascript" th:inline="javascript">
-		var list_url=/*[[@{/sys/warning-info/data}]]*/;
+	var list_url=/*[[@{/sys/warning-info/data}]]*/;
+	$("#search").click(function () {
+		$.ajax({
+			type:'get',
+			url:list_url,
+			data:$("#searchform").serialize(),
+			dataType:'json',
+			success:function(data){
+				/*如果成功,重新渲染表格*/
+				$("#tb_departments").bootstrapTable("load",data)
+
+			}
+		})
+
+	})
+
+
+
 
 		var dataTable = $('#tb_departments').bootstrapTable({
 				classes: 'table table-bordered table-hover table-striped',
@@ -138,8 +153,8 @@
 		        queryParamsType: '',
 		        queryParams: function (param) {
 		            return {
-		                pageNum: param.pageNumber,
-		                pageSize: param.pageSize,
+		                current: param.pageNumber,
+		                size: param.pageSize,
 		                // collegeName:
 		            }
 		        },
@@ -151,8 +166,8 @@
 					{field:'year',title:'年级',align:'center',sortable:true},
 					{field:'userId',title:'学号',align:'center',sortable:true},
 					{field:'username',title:'姓名',align:'center',sortable:true},
-					{field:'sex',title:'性别',align:'center',sortable:true},
-					{field:'type',title:'预警类型',align:'center',sortable:true},
+					{field:'sex',title:'性别',align:'center',sortable:true,formatter:sexType},
+					{field:'type',title:'预警类型',align:'center',sortable:true,formatter:warningType},
 				{
 					field: 'operate',
 					title: '操作',
@@ -170,7 +185,32 @@
 		    });
 
 
+function sexType(value,row,index){
+	switch(row.sex) {
+		case '1':
+			value="男";
+			break;
+		default:
+			value='女';
+			break;
+	}
+	return value;
+}
 
+function warningType(value,row,index){
+	switch(row.type){
+		case '1':
+			value='学业预警';
+			break;
+		case '2':
+			value='留级预警';
+			break;
+		default:
+			value='退学预警';
+			break;
+	}
+	return value;
+}
 
 
 
