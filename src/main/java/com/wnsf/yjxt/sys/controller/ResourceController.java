@@ -36,14 +36,14 @@ public class ResourceController {
     @GetMapping
     @ResponseBody
     public List<Resource> data() {
-        QueryWrapper<Resource> queryWrapper = new QueryWrapper<>();
-        queryWrapper.orderByAsc("order_num");
+        //QueryWrapper<Resource> queryWrapper = new QueryWrapper<>();
+        //queryWrapper.orderByAsc("order_num");
         List<Resource> list = resourceService.list();
         return list;
     }
 
     @GetMapping("/add")
-    public String add(@RequestParam(name = "parentId") Integer parentId, Model model) {
+    public String add( Integer parentId, Model model) {
         model.addAttribute("parentId", parentId);
         return "resource/resource_add";
     }

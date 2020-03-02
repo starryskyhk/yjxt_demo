@@ -55,7 +55,8 @@
 <link th:href="@{/js/jquery-treegrid/jquery.treegrid.min.css}" rel="stylesheet">
 <script type="text/javascript" th:src="@{/js/jquery-treegrid/jquery.treegrid.min.js}"></script>
 <script type="text/javascript" th:src="@{/js/bootstrap-table/extensions/treegrid/bootstrap-table-treegrid.min.js}"></script>
-<script type="text/javascript">
+<script type="text/javascript" th:src="@{/lib/layer/layer.js}"></script>
+<script type="text/javascript" >
 
 	// tree-grid使用
 	var $treeTable = $('.tree-table');
@@ -99,13 +100,13 @@
 				title: '操作',
 				align: 'center',
 				events : {
-					'click .role-add': function (e, value, row, index) {
+					'click .role-add': function (e, value, row) {
 						add(row.parentId);
 					},
-					'click .role-delete': function (e, value, row, index) {
+					'click .role-delete': function (e, value, row) {
 						del(row.resourceId);
 					},
-					'click .role-edit': function (e, value, row, index) {
+					'click .role-edit': function (e, value, row) {
 						update(row.resourceId);
 					}
 				},
@@ -181,11 +182,28 @@
 		}
 	}
 
-	function add(parentId) {
-		alert(parentId);
-		window.location.href = '[[@{/sys/resource/add(parentId=${parentId})}]]';
+	function add(id) {
+		alert(id);
+		console.log(id);
+		console.log(${id});
+		window.location.href = '[[@{/sys/resource/add(parentId=${id})}]]';
 	}
 	function del(id) {
+		layer.confirm(id, {icon: 3, offset: 't'}, function () {
+			$.ajax({
+				url: '[[@{/sys/resource/{resourceId}(resourceId=${id})}]]' ,
+				type: 'delete',
+				success: function (response) {
+					if (response.code == 0) {
+						layer.msg(response.msg, {icon: 1, time: 1000, offset: 't'});
+						//跳转到资源管理的初始化页面
+						//window.parent.location.href = '${ctx}/sys/resource?parentId=${parent.resourceId}';
+					} else {
+						layer.alert(response.msg, {icon: 5, offset: 't'});
+					}
+				}
+			})
+		})
 
 	}
 	function update(id) {
