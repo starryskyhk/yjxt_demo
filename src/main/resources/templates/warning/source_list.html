@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>预警列表</title>
+	<link rel="icon" href="favicon.ico" type="image/ico">
+	<meta name="keywords" content="预警列表">
+	<meta name="description" content="预警列表">
+	<meta name="author" content="yinqi">
+	<link href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<link href="css/materialdesignicons.min.css" th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
+	<link th:href="@{/css/animate.css}" rel="stylesheet">
+	<link th:href="@{/css/style.min.css}" rel="stylesheet">
+	<link th:href="@{/js/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet">
+
+</head>
+<body>
+
+
+<div class="container-fluid p-t-15">
+
+
+
+
+	<div class="col-lg-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>各学院预警列表</h4>
+			</div>
+			<form id="searchform" method="get">
+				<div class="form-group" >
+					学院号<input type="text" name="college_id">
+					专业号<input type="text" name="major_id">
+					班级号<input type="text" name="class_id"><br>
+					学号<input type="text" name="user_id">
+					姓名<input type="text" name="username">
+					年级<input type="text" name="year"><br>
+					预警类型<input type="text" name="type">
+					<button type="button" id="search" value="提交">提交</button>
+				</div>
+			</form>
+
+
+
+
+			<div class="card-body">
+				<form id="toolbar"  class="form-inline">
+					<div class="form-group" >
+						<select class="form-control" id="nianji-select" name="example-select" size="1">
+							<option value="0">请选择年级</option>
+							<option value="-1">大一</option>
+							<option value="1">大二</option>
+							<option value="2">大三</option>
+							<option value="3">大四</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<button class="btn btn-label btn-primary btn-sm"> 确认提交</button>
+					</div>
+					<div class="btn-group">
+						<!--					  <button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown"  data-toggle="tooltip" data-placement="top" title="点击可以选中导出的格式"aria-haspopup="true" aria-expanded="false">-->
+						<!--					    导出 <span class="caret"></span>-->
+						<!--					  </button>-->
+						<ul class="dropdown-menu">
+							<li><a href="#!">明细表</a></li>
+							<li><a href="#!">统计表</a></li>
+						</ul>
+					</div>
+					<div class="btn-group">
+						<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							导入 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#!">学生数据</a></li>
+
+						</ul>
+					</div>
+				</form>
+				<table id="tb_departments"></table>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+</div>
+</div>
+
+
+
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/lib/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/perfect-scrollbar.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table-zh-CN.min.js}"></script>
+<!--消息提示-->
+<!-- 		<script src="js/bootstrap-notify.min.js"></script>
+<script type="text/javascript" src="js/lightyear.js"></script>
+<script type="text/javascript" src="js/main.min.js"></script> -->
+<!--行内编辑插件-->
+<link th:href="@{/js/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.min.css}" rel="stylesheet">
+<script type="text/javascript" th:src="@{/js/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js}"></script>
+<!-- 表格 -->
+<script type="text/javascript" th:src="@{/js/Chart.js}"></script>
+<script type="text/javascript" th:src="@{/js/main.min.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+	var list_url=/*[[@{/sys/warning-info/data}]]*/;
+	$("#search").click(function () {
+		$.ajax({
+			type:'get',
+			url:list_url,
+			data:$("#searchform").serialize(),
+			dataType:'json',
+			success:function(data){
+				/*如果成功,重新渲染表格*/
+				$("#tb_departments").bootstrapTable("load",data)
+
+			}
+		})
+
+	})
+
+
+
+
+	var dataTable = $('#tb_departments').bootstrapTable({
+		classes: 'table table-bordered table-hover table-striped',
+		url: list_url,       //  请求后台的URL
+		method: "get",                      //  请求方式
+		uniqueId: "id",                     //  每一行的唯一标识，一般为主键列
+		cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+		pagination: true,                   //  是否显示分页
+		sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+		pageSize: 10,                       //  每页的记录行数
+		striped: true,                      //是否显示行间隔色
+		showRefresh: true,   //是否显示刷新
+		clickToSelect: false, //是否启用点击选中行
+		showToggle: true,//是否显示详细列表
+		search: true,   //是否显示表格搜索
+		sortable:true,     //是否排序
+		//showColumns: true,         // 是否显示所有的列
+		//showRefresh: true,         // 是否显示刷新按钮
+		toolbar: '#toolbar',       // 工具按钮容器
+		pageNumber: 1,                       // 初始化加载第一页，默认第一页
+		pageList: [10, 25, 50, 100],         // 可供选择的每页的行数
+		//	 search: true,                      // 是否显示表格搜索，此搜索是客户端搜索
+		queryParamsType: '',
+		queryParams: function (param) {
+			return {
+				current: param.pageNumber,
+				size: param.pageSize,
+				// collegeName:
+			}
+		},
+		columns: [
+			{checkbox:true},
+			{field:'collegeName',title:'学院',align:'center',sortable:true},
+			{field:'majorName',title:'专业',align:'center',sortable:true},
+			{field:'className',title:'班级',align:'center',sortable:true},
+			{field:'year',title:'年级',align:'center',sortable:true},
+			{field:'userId',title:'学号',align:'center',sortable:true},
+			{field:'username',title:'姓名',align:'center',sortable:true},
+			{field:'sex',title:'性别',align:'center',sortable:true,formatter:sexType},
+			{field:'type',title:'预警类型',align:'center',sortable:true,formatter:warningType},
+			{
+				field: 'operate',
+				title: '操作',
+				align:'center',
+				formatter: btnGroup,  // 自定义方法
+				events: {
+					'click .edit-btn': function (event, value, row, index) {
+						getScore(row.userId);
+					}
+				}
+			},
+		]
+	});
+
+	// 操作按钮
+	function btnGroup ()
+	{
+		let html =
+				'<a href="#"  class="btn btn-xs btn-default m-r-5 edit-btn" title="查看详情" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>';
+		return html;
+	}
+	// 操作方法 - 查看学生具体信息
+	function getScore(userId)
+	{
+		var url=/*[[@{/sys/warning-info/scorelist/}]]*/;
+		alert(url);
+		$.ajax({
+			type:'get',
+			url:url+userId,
+			success:function(msg){
+
+			}
+
+		})
+
+	}
+	function sexType(value,row,index){
+		switch(row.sex) {
+			case '1':
+				value="男";
+				break;
+			default:
+				value='女';
+				break;
+		}
+		return value;
+	}
+
+	function warningType(value,row,index){
+		switch(row.type){
+			case '1':
+				value='学业预警';
+				break;
+			case '2':
+				value='留级预警';
+				break;
+			default:
+				value='退学预警';
+				break;
+		}
+		return value;
+	}
+
+</script>
+
+</body>
+</html>

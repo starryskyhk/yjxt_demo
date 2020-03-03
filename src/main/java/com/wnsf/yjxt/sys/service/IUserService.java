@@ -3,6 +3,7 @@ package com.wnsf.yjxt.sys.service;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.wnsf.yjxt.sys.entity.StudentSource;
 import com.wnsf.yjxt.sys.entity.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -24,4 +25,6 @@ public interface IUserService extends IService<User> {
      * @return 返回Page对象
      */
     public Page<User> getStudentInfo(Page<User> page,@Param("ew") Wrapper wrapper);
+
+    public Page<StudentSource> getStudentSource(Page<StudentSource> page,@Param("ew") Wrapper wrapper);
 }

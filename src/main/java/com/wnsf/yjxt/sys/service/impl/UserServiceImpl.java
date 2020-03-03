@@ -3,6 +3,7 @@ package com.wnsf.yjxt.sys.service.impl;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.wnsf.yjxt.sys.entity.StudentSource;
 import com.wnsf.yjxt.sys.entity.User;
 import com.wnsf.yjxt.sys.mapper.UserMapper;
 import com.wnsf.yjxt.sys.service.IUserService;
@@ -27,5 +28,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     //根据条件查询User对象
     public Page<User> getStudentInfo(Page<User> page, @Param("ew") Wrapper wrapper) {
         return userMapper.selectStudentInfo(page,wrapper) ;
+    }
+    //根据条件查询学生的挂科情况
+    @Override
+    public Page<StudentSource> getStudentSource(Page<StudentSource> page, Wrapper wrapper) {
+        return userMapper.selectStudentSource(page,wrapper);
     }
 }

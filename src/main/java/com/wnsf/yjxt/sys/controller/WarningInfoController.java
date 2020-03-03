@@ -8,10 +8,8 @@ import com.wnsf.yjxt.sys.entity.User;
 import com.wnsf.yjxt.sys.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -59,5 +57,12 @@ public class WarningInfoController {
         userService.getStudentInfo(page, wrapper);
         return R.ok(page);
 
+    }
+
+    @GetMapping("/scorelist/{userId}")
+    public String score(@PathVariable Integer userId, Model model){
+        //StudentSource source=userService.getStudentSource(userId);
+
+        return "dd";
     }
 }

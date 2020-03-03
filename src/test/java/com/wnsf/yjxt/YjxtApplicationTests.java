@@ -6,6 +6,7 @@ import cn.hutool.poi.excel.ExcelUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wnsf.yjxt.sys.entity.Major;
+import com.wnsf.yjxt.sys.entity.StudentSource;
 import com.wnsf.yjxt.sys.entity.User;
 import com.wnsf.yjxt.sys.service.IMajorService;
 import com.wnsf.yjxt.sys.service.IUserService;
@@ -71,6 +72,14 @@ public class YjxtApplicationTests {
         System.out.println(page1.getRecords());
 
 
+    }
+
+    @Test
+    public void test03(){
+        Page<StudentSource> page=new Page<StudentSource>();
+        page.setCurrent(1);
+        page.setSize(10);
+        QueryWrapper wrapper=new QueryWrapper();
     }
 
 }

@@ -171,20 +171,39 @@
 				{
 					field: 'operate',
 					title: '操作',
+					align:'center',
 					formatter: btnGroup,  // 自定义方法
 					events: {
 						'click .edit-btn': function (event, value, row, index) {
-							editUser(row.id);
-						},
-						'click .del-btn': function (event, value, row, index) {
-							delUser(row.id);
+							getScore(row.userId);
 						}
 					}
 				},
 				]
 		    });
 
+	// 操作按钮
+	function btnGroup ()
+	{
+		let html =
+				'<a href="#"  class="btn btn-xs btn-default m-r-5 edit-btn" title="查看详情" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>';
+		return html;
+	}
+	// 操作方法 - 查看学生具体信息
+	function getScore(userId)
+	{
+		var url=/*[[@{/sys/warning-info/scorelist/}]]*/;
+		alert(url);
+		$.ajax({
+			type:'get',
+			url:url+userId,
+			success:function(msg){
 
+			}
+
+		})
+
+	}
 function sexType(value,row,index){
 	switch(row.sex) {
 		case '1':
@@ -303,21 +322,9 @@ function warningType(value,row,index){
 		        }
 		    });
 
-		// 操作按钮
-		function btnGroup ()
-		{
-		    let html =
-		        '<a href="#!" class="btn btn-xs btn-default m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
-		        '<a href="#!" class="btn btn-xs btn-default del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>';
-		    return html;
-		}
 
-		// 操作方法 - 编辑
-		function editUser(id)
-		{
-		    alert('编辑信息跳转'+id);
 
-		}
+
 		// 操作方法 - 删除
 		function delUser(id)
 		{
