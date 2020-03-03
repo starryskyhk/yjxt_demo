@@ -3,7 +3,6 @@ package com.wnsf.yjxt.sys.mapper;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.wnsf.yjxt.sys.entity.StudentSource;
 import com.wnsf.yjxt.sys.entity.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,5 +25,7 @@ public interface UserMapper extends BaseMapper<User> {
      */
     Page<User> selectStudentInfo(Page<User> page, @Param("ew") Wrapper wrapper);
 
-    Page<StudentSource> selectStudentSource(Page<StudentSource> page, @Param("ew") Wrapper wrapper);
+
+
+    User selectStudentInfoById(String userId);
 }

@@ -8,7 +8,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/yjxt?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=GMT%2B8
     username: root
-    password: root
+    password: 123456
     type: com.alibaba.druid.pool.DruidDataSource
       #   数据源其他配置
     initialSize: 5

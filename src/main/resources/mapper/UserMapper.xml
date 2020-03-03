@@ -7,4 +7,10 @@
         *from student_info
         ${ew.customSqlSegment}
     </select>
+
+    <select id="selectStudentInfoById" resultType="com.wnsf.yjxt.sys.entity.User">
+        SELECT
+        *from student_info
+       where user_id=#{userId}
+    </select>
 </mapper>

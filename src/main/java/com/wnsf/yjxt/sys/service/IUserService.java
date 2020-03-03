@@ -3,7 +3,6 @@ package com.wnsf.yjxt.sys.service;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.wnsf.yjxt.sys.entity.StudentSource;
 import com.wnsf.yjxt.sys.entity.User;
 import org.apache.ibatis.annotations.Param;
 
@@ -17,7 +16,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface IUserService extends IService<User> {
     /**
-     *  根据条件查询User对象
+     *  根据条件查询User对象列表
      * @Author 韩坤
      * @Date  2020/3/1
      * @param page	分页对象
@@ -26,5 +25,12 @@ public interface IUserService extends IService<User> {
      */
     public Page<User> getStudentInfo(Page<User> page,@Param("ew") Wrapper wrapper);
 
-    public Page<StudentSource> getStudentSource(Page<StudentSource> page,@Param("ew") Wrapper wrapper);
+    /***
+     * 根据学号查询学生信息
+     * @Author 韩坤
+     * @Date  2020/3/3
+     * @param userId
+     * @return
+     */
+    User getStudentInfoById(String userId);
 }

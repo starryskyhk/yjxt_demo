@@ -4,7 +4,9 @@ package com.wnsf.yjxt.sys.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wnsf.yjxt.common.model.R;
+import com.wnsf.yjxt.sys.entity.StudentScore;
 import com.wnsf.yjxt.sys.entity.User;
+import com.wnsf.yjxt.sys.service.IScoreService;
 import com.wnsf.yjxt.sys.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +28,8 @@ import java.util.Map;
 public class WarningInfoController {
     @Autowired
     private IUserService userService;
-
+    @Autowired
+    private IScoreService scoreService;
 
     //跳转到学院预警列表
     @GetMapping("list")
@@ -58,11 +61,27 @@ public class WarningInfoController {
         return R.ok(page);
 
     }
+    //将此行学生的数据转发到成绩列表页面
+    @GetMapping("/score/{userId}")
+    public String score(@PathVariable String userId, Model model){
 
-    @GetMapping("/scorelist/{userId}")
-    public String score(@PathVariable Integer userId, Model model){
-        //StudentSource source=userService.getStudentSource(userId);
+        User user=userService.getStudentInfoById(userId);
+        System.out.println("user:"+user);
+        model.addAttribute("user", user);
 
-        return "dd";
+        return "warning/score";
+    }
+
+    //获取当前学生的成绩信息
+    @GetMapping("/scorelist")
+    @ResponseBody
+    public R scorelist(Page<StudentScore> page, Integer userId){
+        //1:创建条件构造器
+        QueryWrapper wrapper=new QueryWrapper();
+        //2:设置条件
+        wrapper.eq("user_id", userId);
+        //3:查询
+        scoreService.getStudentScore(page,wrapper);
+        return R.ok(page);
     }
 }

@@ -12,11 +12,15 @@ import lombok.experimental.Accessors;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-public class StudentSource {
+public class StudentScore {
     /**
      * 课程开设学院名称
      */
     private String collegeName;
+    /**
+     * 课程id
+     */
+    private Integer courseId;
     /**
      * 课程名称
      */

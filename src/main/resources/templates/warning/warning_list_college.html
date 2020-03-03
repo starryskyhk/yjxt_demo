@@ -175,7 +175,12 @@
 					formatter: btnGroup,  // 自定义方法
 					events: {
 						'click .edit-btn': function (event, value, row, index) {
-							getScore(row.userId);
+							var url=/*[[@{/sys/warning-info/score/}]]*/;
+
+
+							window.location.href=url+row.userId;
+
+
 						}
 					}
 				},
@@ -189,21 +194,7 @@
 				'<a href="#"  class="btn btn-xs btn-default m-r-5 edit-btn" title="查看详情" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>';
 		return html;
 	}
-	// 操作方法 - 查看学生具体信息
-	function getScore(userId)
-	{
-		var url=/*[[@{/sys/warning-info/scorelist/}]]*/;
-		alert(url);
-		$.ajax({
-			type:'get',
-			url:url+userId,
-			success:function(msg){
 
-			}
-
-		})
-
-	}
 function sexType(value,row,index){
 	switch(row.sex) {
 		case '1':
