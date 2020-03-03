@@ -17,14 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
  * 用户表 前端控制器
  * </p>
  *
- * @author 韩坤
+ * @author 陈啧啧
  * @since 2020-03-01
  */
 @RestController
 @RequestMapping("/sys/user")
 public class UserController {
-
-
-
 
 }
