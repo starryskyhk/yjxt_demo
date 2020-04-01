@@ -13,4 +13,37 @@
         *from student_info
        where user_id=#{userId}
     </select>
+
+    <select id="getAdminList" resultType="com.wnsf.yjxt.sys.entity.User">
+          SELECT
+             DISTINCT sys_user.user_id,
+
+             username,
+             email,
+             phone,
+             sex,
+             sys_user.create_time,
+             sys_user.update_time
+            FROM
+             sys_use_role
+             LEFT JOIN
+             sys_user
+             ON sys_user.user_id=sys_use_role.user_id
+             LEFT JOIN
+             sys_role
+             ON
+             sys_use_role.role_id =sys_role.role_id
+             WHERE
+             sys_use_role.role_id !='17'
+    </select>
+
+    <select id="getAdminById" resultType="com.wnsf.yjxt.sys.entity.User" parameterType="java.lang.Integer">
+        SELECT
+            user_id,
+            username,
+            email,
+            phone
+        FROM sys_user
+        WHERE user_id = #{id}
+    </select>
 </mapper>

@@ -1,7 +1,11 @@
 package com.wnsf.yjxt.sys.mapper;
 
+import com.wnsf.yjxt.sys.entity.Role;
 import com.wnsf.yjxt.sys.entity.UseRole;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,5 +17,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @since 2020-03-01
  */
 public interface UseRoleMapper extends BaseMapper<UseRole> {
+    /**
+     * 获取用户拥有的角色列表
+     * @param userId
+     * @return
+     */
+    List<UseRole> getUserHasRoleList(Integer userId);
 
 }

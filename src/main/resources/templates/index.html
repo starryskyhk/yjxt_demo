@@ -28,11 +28,11 @@
         
         <nav class="sidebar-main">
           <ul class="nav nav-drawer">
-            <li class="nav-item active"> <a class="multitabs" href="common/lyear_main.html"><i class="mdi mdi-home"></i> <span>后台首页</span></a> </li>
+            <li class="nav-item active"> <a class="multitabs" href="../../../../../../../Desktop/src/main/resources/templates/common/lyear_main.html"><i class="mdi mdi-home"></i> <span>后台首页</span></a> </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-palette"></i> <span>统计信息</span></a>
               <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="statistical_info.html">统计信息</a> </li>
+                <li> <a class="multitabs" href="../../../../../../../Desktop/src/main/resources/templates/statistical_info.html">统计信息</a> </li>
 
               </ul>
             </li>
@@ -40,23 +40,23 @@
               <a href="javascript:void(0)"><i class="mdi mdi-format-align-justify"></i> <span>预警列表</span></a>
               <ul class="nav nav-subnav">
                 <li> <a class="multitabs" th:href="@{/sys/warning-info/list}">各学院预警情况</a> </li>
-				<li> <a class="multitabs" href="warning/score.html">各年纪预警情况</a> </li>
-				<li> <a class="multitabs" href="warning/warning_list_this.html">本学院预警情况</a> </li>
+				<li> <a class="multitabs" href="../../../../../../../Desktop/src/main/resources/templates/warning/warning_list_grade.html">各年纪预警情况</a> </li>
+				<li> <a class="multitabs" href="../../../../../../../Desktop/src/main/resources/templates/warning/warning_list_this.html">本学院预警情况</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-file-outline"></i> <span>预警条件</span></a>
               <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="warning/warning_condition_list.html">各学院预警条件</a> </li>
-				<li> <a class="multitabs" href="warning/warning_condition.html">预警条件设置</a> </li>
+                <li> <a class="multitabs" href="../../../../../../../Desktop/src/main/resources/templates/warning/warning_condition_list.html">各学院预警条件</a> </li>
+				<li> <a class="multitabs" href="../../../../../../../Desktop/src/main/resources/templates/warning/warning_condition.html">预警条件设置</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">
               <a href="javascript:void(0)"><i class="mdi mdi-language-javascript"></i> <span>权限管理</span></a>
               <ul class="nav nav-subnav">
-                <li> <a class="multitabs" href="user/user_list.html">用户管理</a> </li>
-                <li> <a class="multitabs" href="role/role_list.html">角色管理</a> </li>
-                <li> <a class="multitabs" href="resource/resource_index.html">资源管理</a> </li>
+                <li> <a class="multitabs" th:href="@{/sys/user/index}">用户管理</a> </li>
+                <li> <a class="multitabs" th:href="@{/sys/role/index}">角色管理</a> </li>
+                <li> <a class="multitabs" th:href="@{/sys/resource/index}">资源管理</a> </li>
               </ul>
             </li>
             <li class="nav-item nav-item-has-subnav">

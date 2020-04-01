@@ -6,6 +6,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.wnsf.yjxt.sys.entity.User;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * <p>
  * 用户表 Mapper 接口
@@ -28,4 +30,18 @@ public interface UserMapper extends BaseMapper<User> {
 
 
     User selectStudentInfoById(String userId);
+
+    /**
+     * 获取管理员列表
+     * @return
+     */
+    List<User> getAdminList();
+
+    /**
+     * 获取指定id的管理员信息
+     * @param id
+     * @return
+     */
+    User getAdminById(Integer id);
+
 }

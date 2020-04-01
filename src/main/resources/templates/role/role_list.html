@@ -1,197 +1,223 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-		<title>bootstrap-table - 光年(Light Year Admin)后台管理系统模板</title>
-		<link rel="icon" href="favicon.ico" type="image/ico">
-		<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
-		<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
-		<meta name="author" content="yinqi">
-		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
-		<link th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
-		<link th:href="@{/css/animate.css}" rel="stylesheet">
-		<link th:href="@{/css/style.min.css}" rel="stylesheet">
-		<link th:href="@{/js/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet">
-	</head>
-	<body>
-		
-		
-		<div class="container-fluid p-t-15">
-		  
-		  <div class="row">
-		    <div class="col-lg-12">
-		      <div class="card">
-		        <div class="card-header">
-					<h4>bootstrap-table简单示例</h4>
+<head>
+    <th:block th:include="include::header('角色管理')"/>
+</head>
+<body>
 
-				        </div>
-				
-		        <div class="card-body">
-		          
-		          <div id="toolbar" class="toolbar-btn-action" >
-		            <button id="btn_add" type="button" class="btn btn-primary m-r-5 btn-sm" onclick="add()">
-		              <span class="mdi mdi-plus" aria-hidden="true"></span>新增
-		            </button>
-		            <button id="btn-update" type="button" class="btn btn-success m-r-5 btn-sm">
-		              <span class="mdi mdi-check" aria-hidden="true"></span>修改
-		            </button>
-		            <button id="btn_delete" type="button" class="btn btn-danger btn-sm" onclick="deleteRole()">
-		              <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
-		            </button>
-					<button id="btn-assign-resource" type="button" class="btn btn-info btn-sm">
-					  <span class="mdi mdi-plus" ></span>分配资源
-					</button>
-		          </div>
-		          <table id="data-table"></table>
-		 
-		        </div>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		
-		
-<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
-<script type="text/javascript" th:src="@{/lib/layer/layer.js}"></script>
-<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/perfect-scrollbar.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table.js}"></script>
-<script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table-zh-CN.min.js}"></script>
-<!--消息提示-->
 
+<div class="container-fluid p-t-15">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>角色列表</h4>
+                </div>
+
+                <div class="card-body">
+
+                    <div id="toolbar" class="toolbar-btn-action">
+                        <button id="btn_add" type="button" class="btn btn-primary m-r-5 btn-sm" onclick="add()">
+                            <span class="mdi mdi-plus" aria-hidden="true"></span>新增
+                        </button>
+                        <button id="btn_delete" type="button" class="btn btn-danger m-r-5 btn-sm"
+                                onclick="deleteRole()">
+                            <span class="mdi mdi-window-close" aria-hidden="true"></span>删除
+                        </button>
+                    </div>
+                    <table id="data-table"></table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<th:block th:include="include::footer"/>
 <!--行内编辑插件-->
-<link th:href="@{/js/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.min.css}" rel="stylesheet">
-<script type="text/javascript" th:src="@{/js/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js}"></script>
-<script type="text/javascript" th:src="@{/js/main.min.js}"></script>
+<th:block th:include="include::bootstrap3-editbable"/>
 <script type="text/javascript">
-		var list_url='./data/role_list.json';
-		
-		var datalist='[[@{/sys/role}]]';
-		// 初始化表格数据
-		    var dataTable = $('#data-table').bootstrapTable({
-				classes: 'table table-bordered table-hover table-striped',
-		        url: datalist,                      //  请求后台的URL
-		        method: "get",                      //  请求方式
-		        uniqueId: "id",                 //  每一行的唯一标识，一般为主键列
-				idField: 'id',
-		        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
-		        pagination: true,                   //  是否显示分页
-		        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
-		        pageSize: 10,                       //  每页的记录行数
-		        queryParamsType: '',
-				toolbar: '#toolbar',       // 工具按钮容器
-				 search: true,                      // 是否显示表格搜索，此搜索是客户端搜索
-				 showColumns: true,         // 是否显示所有的列
-				 showRefresh: true,         // 是否显示刷新按钮
-		        queryParams: function (param) {
-		            return {
-		                current: param.pageNumber, // 当前页 1
-		                size: param.pageSize,      // 一页显示多少天10
-		                roleName: $("#roleName").val()
-		            }
-		        },
-		        columns: [{
-		            checkbox: true
-		        }, {
-		            field: 'name',
-		            title: '角色名称'
-		        }, {
-		            field: 'remark',
-		            title: '角色描述'
-		        }, {
-		            field: 'createTime',
-		            title: '创建时间'
-		        }, {
-		            field: 'updateTime',
-		            title: '最后更新时间'
-		        },{
-					field: 'operate',
-					title: '操作',
-					formatter: btnGroup,  // 自定义方法
-					events: {
-						'click .edit-btn': function (event, value, row, index) {
-							editUser(row.id);
-						},
-						'click .del-btn': function (event, value, row, index) {
-							delUser(row.id);
-						}
-					}
-				},
-				]
-		    });
-			
 
-		
-		// 修改
-		$('#btn-update').click(function () {
-			var rows = $('#data-table').bootstrapTable('getSelections');
-			if (rows.length == 0) {
-			   layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
-			} else if (rows.length != 1) {
-			   layer.msg("一次只能修改一条数据!", {icon: 2, time: 1000, offset: 't'})
-			} else {
-				window.location.href = 'role_update.html';
-			}
-		});
-		//添加
-		function add() {
-				window.location.href = 'role_add.html';
-		};
-		//删除
-		function deleteRole(){
-			var rows = $('#data-table').bootstrapTable('getSelections');
-			if (rows.length == 0) {
-			   layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
-			} else if (rows.length == 1) {
-			   layer.confirm("确认删除?", {icon: 3, offset: 't'}, function () {
-				   //异步删除一条
-				  alert(rows[0].id);
-			   })
-			} else {
-				layer.confirm("确认批量删除?", {icon: 3, offset: 't'}, function () {
-				    var ids = new Array();
-					for (var i = 0; i < rows.length; i++) {
-					    ids.push(rows[i].id);
-					}
-					alert(JSON.stringify(ids));
-				})
-			}
-		};
-		// 分配资源
-		    $('#btn-assign-resource').click(function () {
-		        	var rows = $('#data-table').bootstrapTable('getSelections');
-		        if (rows.length == 0) {
-		            layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
-		        } else if (rows.length != 1) {
-		            layer.msg("一次只能修改一条数据!", {icon: 2, time: 1000, offset: 't'})
-		        } else {
-		            window.location.href = 'assign_resource.html';
-		        }
-		    });
-		
-		// 操作按钮
-		function btnGroup ()
-		{
-		    let html =
-		        '<a href="#!" class="btn btn-xs btn-default m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
-		        '<a href="#!" class="btn btn-xs btn-default del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-window-close"></i></a>';
-		    return html;
-		}
-		
-		// 操作方法 - 编辑
-		function editUser(id)
-		{
-		    alert('编辑信息跳转'+id);
-			
-		}
-		// 操作方法 - 删除
-		function delUser(id)
-		{
-		    alert('信息删除成功'+id);
-		}
-		</script>
-		
-	</body>
+    var datalist = '[[@{/sys/role}]]';
+    // 初始化表格数据
+    var dataTable = $('#data-table').bootstrapTable({
+        classes: 'table table-bordered table-hover table-striped',
+        url: datalist,                      //  请求后台的URL
+        method: "get",                      //  请求方式
+        uniqueId: "roleId",                 //  每一行的唯一标识，一般为主键列
+        idField: 'roleId',
+        cache: false,                       //  设置为 false 禁用 AJAX 数据缓存， 默认为true
+        pagination: true,                   //  是否显示分页
+        sidePagination: "client",           //  分页方式：client客户端分页，server服务端分页
+        pageSize: 5,                       //  每页的记录行数
+        pageList: [5, 10, 20, 30],      //可选择单页记录数
+        queryParamsType: '',
+        toolbar: '#toolbar',       // 工具按钮容器
+        search: true,                      // 是否显示表格搜索，此搜索是客户端搜索
+        showColumns: true,         // 是否显示所有的列
+        showRefresh: true,         // 是否显示刷新按钮
+        columns: [{
+            checkbox: true
+        }, {
+            field: 'name',
+            title: '角色名称'
+        }, {
+            field: 'remark',
+            title: '角色描述'
+        }, {
+            field: 'orderNum',
+            title: '显示顺序',
+        }, {
+            field: 'status',
+            title: '状态',
+            sortable: true,
+            formatter: function (value, row, index) {
+                if (value == 1) {
+                    is_checked = '';
+                } else if (value == 0) {
+                    is_checked = 'checked="checked"';
+                }
+                result = '<label class="lyear-switch switch-primary lyear-status"><input type="checkbox" ' + is_checked + '><span  onClick="updateStatus(' + row.roleId + ', ' + value + ')"></span></label>';
+                return result;
+            },
+        }, {
+            field: 'createTime',
+            title: '创建时间'
+        }, {
+            field: 'operate',
+            title: '操作',
+            formatter: btnGroup,  // 自定义方法
+            align: 'center',
+            events: {
+                'click .edit-btn': function (event, value, row, index) {
+                    editUser(row.roleId);
+                },
+                'click .del-btn': function (event, value, row, index) {
+                    delUser(row.roleId);
+                }
+            }
+        },
+        ]
+    });
+
+
+    // 修改
+    $('#btn-update').click(function () {
+        var rows = $('#data-table').bootstrapTable('getSelections');
+        if (rows.length == 0) {
+            layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
+        } else if (rows.length != 1) {
+            layer.msg("一次只能修改一条数据!", {icon: 2, time: 1000, offset: 't'})
+        } else {
+            window.location.href = 'role_update.html';
+        }
+    });
+
+    //添加
+    function add() {
+
+       zeze.open_add("添加角色",'[[@{/sys/role/add}]]');
+    };
+
+    //删除
+    function deleteRole() {
+        var rows = $('#data-table').bootstrapTable('getSelections');
+        if (rows.length == 0) {
+            layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
+        } else if (rows.length == 1) {
+            layer.confirm("确认删除?", {icon: 3, offset: 't'}, function () {
+                //异步删除一条
+                alert(rows[0].id);
+            })
+        } else {
+            layer.confirm("确认批量删除?", {icon: 3, offset: 't'}, function () {
+                var ids = new Array();
+                for (var i = 0; i < rows.length; i++) {
+                    ids.push(rows[i].id);
+                }
+                alert(JSON.stringify(ids));
+            })
+        }
+    };
+    // 分配资源
+    $('#btn-assign-resource').click(function () {
+        var rows = $('#data-table').bootstrapTable('getSelections');
+        if (rows.length == 0) {
+            layer.msg("请选择数据行!", {icon: 2, time: 1000, offset: 't'})
+        } else if (rows.length != 1) {
+            layer.msg("一次只能修改一条数据!", {icon: 2, time: 1000, offset: 't'})
+        } else {
+            var url = '[[@{/sys/role/assign/}]]';
+            window.location.href = url + rows[0].roleId;
+        }
+    });
+
+    // 操作按钮
+    function btnGroup() {
+        let html =
+            '<a href="#!" class="btn btn-xs btn-success m-r-5 edit-btn" title="编辑" data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>' +
+            '<a href="#!" class="btn btn-xs btn-danger m-r-5 del-btn" title="删除" data-toggle="tooltip"><i class="mdi mdi-delete"></i></a>';
+        return html;
+    }
+
+    // 操作方法 - 编辑
+    function editUser(id) {
+        var url = '[[@{/sys/role/update/}]]';
+        //window.location.href = url + id;
+        zeze.open_add("编辑角色",url+id);
+
+    }
+
+    // 操作方法 - 删除
+    function delUser(id) {
+        var url = '[[@{/sys/role/}]]';
+        layer.confirm("你确定删除吗?", {icon: 3, offset: 't'}, function () {
+            $.ajax({
+                url: url + id,
+                type: 'delete',
+                success: function (response) {
+                    if (response.code == 0) {
+                        layer.msg(response.msg, {icon: 1, time: 1000, offset: 't'});
+                        //跳转到资源管理的初始化页面
+                        //window.location.href = url+'index';
+                        //前台删除
+                        $('#data-table').bootstrapTable('remove', {
+                            field: "roleId",   //此处的 “id”对应的是字段名
+                            values: [parseInt(id)]
+                        });
+                    } else {
+                        layer.alert(response.msg, {icon: 5, offset: 't'});
+                    }
+                }
+            })
+
+        })
+    }
+
+    function updateStatus(roleId, state) {
+        var newstate = (state == 1) ? 0 : 1; // 发送参数值跟当前参数值相反
+        console.log(roleId + "" + newstate);
+        var url='[[@{/sys/role/status/}]]'+roleId+'/'+newstate;
+         $.ajax({
+             type: "post",
+             url: url,
+             dataType: 'json',
+             success: function (data, status) {
+                 if (data.code == '0') {
+                     $('#data-table').bootstrapTable('updateCellById', {id: roleId, field: 'status', value: newstate});
+                     layer.msg(data.msg,{icon: 1, time: 1000});
+                 } else {
+                    // alert(data.msg);
+                     $('#data-table').bootstrapTable('updateCellById', {id: roleId, field: 'status', value: state}); // 因开关点击后样式是变的，失败也重置下
+                 }
+             },
+             error: function () {
+                 alert('修改失败，请稍后再试');
+             }
+         })
+    }
+</script>
+
+</body>
 </html>

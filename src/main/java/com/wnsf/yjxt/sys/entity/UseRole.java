@@ -1,5 +1,6 @@
 package com.wnsf.yjxt.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -37,6 +38,11 @@ public class UseRole implements Serializable {
      * 角色id
      */
     private Integer roleId;
+    /**
+     * 角色名字
+     */
+    @TableField(exist = false)
+    private String name;
 
 
 }

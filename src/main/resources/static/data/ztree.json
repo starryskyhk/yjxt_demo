@@ -1,0 +1,749 @@
+[
+  {
+    "id": 1,
+    "pId": 0,
+    "name": "系统管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;</font>",
+    "title": "系统管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 2,
+    "pId": 0,
+    "name": "系统监控<font color=\"#888\">&nbsp;&nbsp;&nbsp;</font>",
+    "title": "系统监控",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 3,
+    "pId": 0,
+    "name": "系统工具<font color=\"#888\">&nbsp;&nbsp;&nbsp;</font>",
+    "title": "系统工具",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 100,
+    "pId": 1,
+    "name": "用户管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:view</font>",
+    "title": "用户管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 101,
+    "pId": 1,
+    "name": "角色管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:role:view</font>",
+    "title": "角色管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 102,
+    "pId": 1,
+    "name": "菜单管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:menu:view</font>",
+    "title": "菜单管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 103,
+    "pId": 1,
+    "name": "部门管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dept:view</font>",
+    "title": "部门管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 104,
+    "pId": 1,
+    "name": "岗位管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:post:view</font>",
+    "title": "岗位管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 105,
+    "pId": 1,
+    "name": "字典管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dict:view</font>",
+    "title": "字典管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 106,
+    "pId": 1,
+    "name": "参数设置<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:config:view</font>",
+    "title": "参数设置",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 107,
+    "pId": 1,
+    "name": "通知公告<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:notice:view</font>",
+    "title": "通知公告",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 108,
+    "pId": 1,
+    "name": "日志管理<font color=\"#888\">&nbsp;&nbsp;&nbsp;</font>",
+    "title": "日志管理",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 109,
+    "pId": 2,
+    "name": "在线用户<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:online:view</font>",
+    "title": "在线用户",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 110,
+    "pId": 2,
+    "name": "定时任务<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:view</font>",
+    "title": "定时任务",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 111,
+    "pId": 2,
+    "name": "数据监控<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:data:view</font>",
+    "title": "数据监控",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 112,
+    "pId": 2,
+    "name": "服务监控<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:server:view</font>",
+    "title": "服务监控",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 113,
+    "pId": 3,
+    "name": "表单构建<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:build:view</font>",
+    "title": "表单构建",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 114,
+    "pId": 3,
+    "name": "代码生成<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:gen:view</font>",
+    "title": "代码生成",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 115,
+    "pId": 3,
+    "name": "系统接口<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:swagger:view</font>",
+    "title": "系统接口",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1000,
+    "pId": 100,
+    "name": "用户查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:list</font>",
+    "title": "用户查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1001,
+    "pId": 100,
+    "name": "用户新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:add</font>",
+    "title": "用户新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1002,
+    "pId": 100,
+    "name": "用户修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:edit</font>",
+    "title": "用户修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1003,
+    "pId": 100,
+    "name": "用户删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:remove</font>",
+    "title": "用户删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1004,
+    "pId": 100,
+    "name": "用户导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:export</font>",
+    "title": "用户导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1005,
+    "pId": 100,
+    "name": "用户导入<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:import</font>",
+    "title": "用户导入",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1006,
+    "pId": 100,
+    "name": "重置密码<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:user:resetPwd</font>",
+    "title": "重置密码",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1007,
+    "pId": 101,
+    "name": "角色查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:role:list</font>",
+    "title": "角色查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1008,
+    "pId": 101,
+    "name": "角色新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:role:add</font>",
+    "title": "角色新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1009,
+    "pId": 101,
+    "name": "角色修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:role:edit</font>",
+    "title": "角色修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1010,
+    "pId": 101,
+    "name": "角色删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:role:remove</font>",
+    "title": "角色删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1011,
+    "pId": 101,
+    "name": "角色导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:role:export</font>",
+    "title": "角色导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1012,
+    "pId": 102,
+    "name": "菜单查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:menu:list</font>",
+    "title": "菜单查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1013,
+    "pId": 102,
+    "name": "菜单新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:menu:add</font>",
+    "title": "菜单新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1014,
+    "pId": 102,
+    "name": "菜单修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:menu:edit</font>",
+    "title": "菜单修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1015,
+    "pId": 102,
+    "name": "菜单删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:menu:remove</font>",
+    "title": "菜单删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1016,
+    "pId": 103,
+    "name": "部门查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dept:list</font>",
+    "title": "部门查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1017,
+    "pId": 103,
+    "name": "部门新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dept:add</font>",
+    "title": "部门新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1018,
+    "pId": 103,
+    "name": "部门修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dept:edit</font>",
+    "title": "部门修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1019,
+    "pId": 103,
+    "name": "部门删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dept:remove</font>",
+    "title": "部门删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1020,
+    "pId": 104,
+    "name": "岗位查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:post:list</font>",
+    "title": "岗位查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1021,
+    "pId": 104,
+    "name": "岗位新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:post:add</font>",
+    "title": "岗位新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1022,
+    "pId": 104,
+    "name": "岗位修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:post:edit</font>",
+    "title": "岗位修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1023,
+    "pId": 104,
+    "name": "岗位删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:post:remove</font>",
+    "title": "岗位删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1024,
+    "pId": 104,
+    "name": "岗位导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:post:export</font>",
+    "title": "岗位导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1025,
+    "pId": 105,
+    "name": "字典查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dict:list</font>",
+    "title": "字典查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1026,
+    "pId": 105,
+    "name": "字典新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dict:add</font>",
+    "title": "字典新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1027,
+    "pId": 105,
+    "name": "字典修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dict:edit</font>",
+    "title": "字典修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1028,
+    "pId": 105,
+    "name": "字典删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dict:remove</font>",
+    "title": "字典删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1029,
+    "pId": 105,
+    "name": "字典导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:dict:export</font>",
+    "title": "字典导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1030,
+    "pId": 106,
+    "name": "参数查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:config:list</font>",
+    "title": "参数查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1031,
+    "pId": 106,
+    "name": "参数新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:config:add</font>",
+    "title": "参数新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1032,
+    "pId": 106,
+    "name": "参数修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:config:edit</font>",
+    "title": "参数修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1033,
+    "pId": 106,
+    "name": "参数删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:config:remove</font>",
+    "title": "参数删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1034,
+    "pId": 106,
+    "name": "参数导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:config:export</font>",
+    "title": "参数导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1035,
+    "pId": 107,
+    "name": "公告查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:notice:list</font>",
+    "title": "公告查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1036,
+    "pId": 107,
+    "name": "公告新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:notice:add</font>",
+    "title": "公告新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1037,
+    "pId": 107,
+    "name": "公告修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:notice:edit</font>",
+    "title": "公告修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1038,
+    "pId": 107,
+    "name": "公告删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;system:notice:remove</font>",
+    "title": "公告删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 500,
+    "pId": 108,
+    "name": "操作日志<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:operlog:view</font>",
+    "title": "操作日志",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 501,
+    "pId": 108,
+    "name": "登录日志<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:logininfor:view</font>",
+    "title": "登录日志",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1047,
+    "pId": 109,
+    "name": "在线查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:online:list</font>",
+    "title": "在线查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1048,
+    "pId": 109,
+    "name": "批量强退<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:online:batchForceLogout</font>",
+    "title": "批量强退",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1049,
+    "pId": 109,
+    "name": "单条强退<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:online:forceLogout</font>",
+    "title": "单条强退",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1050,
+    "pId": 110,
+    "name": "任务查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:list</font>",
+    "title": "任务查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1051,
+    "pId": 110,
+    "name": "任务新增<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:add</font>",
+    "title": "任务新增",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1052,
+    "pId": 110,
+    "name": "任务修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:edit</font>",
+    "title": "任务修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1053,
+    "pId": 110,
+    "name": "任务删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:remove</font>",
+    "title": "任务删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1054,
+    "pId": 110,
+    "name": "状态修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:changeStatus</font>",
+    "title": "状态修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1055,
+    "pId": 110,
+    "name": "任务详细<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:detail</font>",
+    "title": "任务详细",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1056,
+    "pId": 110,
+    "name": "任务导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:job:export</font>",
+    "title": "任务导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1057,
+    "pId": 114,
+    "name": "生成查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:gen:list</font>",
+    "title": "生成查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1058,
+    "pId": 114,
+    "name": "生成修改<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:gen:edit</font>",
+    "title": "生成修改",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1059,
+    "pId": 114,
+    "name": "生成删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:gen:remove</font>",
+    "title": "生成删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1060,
+    "pId": 114,
+    "name": "预览代码<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:gen:preview</font>",
+    "title": "预览代码",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1061,
+    "pId": 114,
+    "name": "生成代码<font color=\"#888\">&nbsp;&nbsp;&nbsp;tool:gen:code</font>",
+    "title": "生成代码",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1039,
+    "pId": 500,
+    "name": "操作查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:operlog:list</font>",
+    "title": "操作查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1040,
+    "pId": 500,
+    "name": "操作删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:operlog:remove</font>",
+    "title": "操作删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1041,
+    "pId": 500,
+    "name": "详细信息<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:operlog:detail</font>",
+    "title": "详细信息",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1042,
+    "pId": 500,
+    "name": "日志导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:operlog:export</font>",
+    "title": "日志导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1043,
+    "pId": 501,
+    "name": "登录查询<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:logininfor:list</font>",
+    "title": "登录查询",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1044,
+    "pId": 501,
+    "name": "登录删除<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:logininfor:remove</font>",
+    "title": "登录删除",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1045,
+    "pId": 501,
+    "name": "日志导出<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:logininfor:export</font>",
+    "title": "日志导出",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  },
+  {
+    "id": 1046,
+    "pId": 501,
+    "name": "账户解锁<font color=\"#888\">&nbsp;&nbsp;&nbsp;monitor:logininfor:unlock</font>",
+    "title": "账户解锁",
+    "checked": false,
+    "open": false,
+    "nocheck": false
+  }
+]

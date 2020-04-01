@@ -8,4 +8,29 @@
             parent_id
          FROM sys_resource;
     </select>
+
+    <select id="getRoleResource" resultType="com.wnsf.yjxt.sys.entity.Resource" parameterType="java.lang.Integer">
+        SELECT
+            t1.name,
+            t1.resource_id,
+            t1.parent_id,
+            t2.role_id,
+            t1.path
+        FROM
+            sys_resource t1
+        LEFT JOIN sys_role_resource t2 On  t1.resource_id =t2.resource_id
+        AND t2.role_id = #{id}
+    </select>
+
+    <select id="getResourceList" resultType="com.wnsf.yjxt.sys.entity.Resource" parameterType="java.lang.Integer">
+        SELECT
+            t1.name,
+            t1.resource_id,
+            t1.parent_id,
+            t2.role_id,
+            t1.path
+        FROM
+            sys_resource t1
+        LEFT JOIN sys_role_resource t2 On  t1.resource_id =t2.resource_id
+    </select>
 </mapper>

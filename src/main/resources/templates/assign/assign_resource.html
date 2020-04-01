@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:include="include::header('修改角色')"/>
+</head>
+<body>
+<div class="container-fluid m-t-15">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><h4>设置权限</h4></div>
+                <div class="card-body">
+
+                    <form action="#!" method="post" onsubmit="return false;" id="data_form">
+                        <div class="form-group col-lg-4">
+                            <label>角色名称</label>
+                            <input type="hidden" name="roleId" th:value="${role.roleId}">
+                            <input class="form-control" type="text" name="role-input" placeholder="角色名称"
+                                   th:value="${role.name}" readonly>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label>角色名称</label>
+                            <input type="hidden" name="roleId" th:value="${role.roleId}">
+                            <input class="form-control" type="text" name="role-input" placeholder="角色名称"
+                                   th:value="${role.name}" readonly>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <button type="button" class="btn btn-info m-r-5 btn-sm" onclick="quanxuan()">
+                                            全部选择
+                                        </button>
+                                        <button type="button" class="btn btn-info m-r-5 btn-sm" onclick="quxiao()">
+                                            全部取消
+                                        </button>
+                                        <button type="button" class="btn btn-primary m-r-5 btn-sm"
+                                                onclick="window.history.go(-1)">返回
+                                        </button>
+                                        <button type="button" class="btn btn-success m-r-5 btn-sm" id="save">保存</button>
+
+
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <div th:each="treeNode:${tree.getChildren()}">
+                                    <tr>
+                                        <td>
+                                            <label class="lyear-checkbox checkbox-primary">
+                                                <input name="rules" type="checkbox" class="checkbox-parent ck" dataid=""
+                                                       th:attr="dataid=${treeNode.path}" th:value="${treeNode.id}"
+                                                       th:checked="${treeNode.state}">
+                                                <span th:text="${treeNode.name}"> </span>
+                                            </label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="p-l-40">
+                                            <label class="lyear-checkbox checkbox-primary checkbox-inline"
+                                                   th:each="treeNode2:${treeNode.getChildren()}">
+                                                <input name="rules" type="checkbox" class="checkbox-child ck" dataid=""
+                                                       th:attr="dataid=${treeNode2.path}" th:value="${treeNode2.id}"
+                                                       th:checked="${treeNode2.state}">
+                                                <span th:text="${treeNode2.name}"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+
+
+                                </div>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header"><h4>设置权限</h4></div>
+                <div class="card-body">
+
+                    <form action="#!" method="post" onsubmit="return false;" id="1">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <button type="button" class="btn btn-info m-r-5 btn-sm" onclick="quanxuan()">
+                                            全部选择
+                                        </button>
+                                        <button type="button" class="btn btn-info m-r-5 btn-sm" onclick="quxiao()">
+                                            全部取消
+                                        </button>
+                                        <button type="button" class="btn btn-primary m-r-5 btn-sm"
+                                                onclick="window.history.go(-1)">返回
+                                        </button>
+                                        <button type="button" class="btn btn-success m-r-5 btn-sm" id="save1">保存</button>
+
+
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <div th:each="treeNode:${tree.getChildren()}">
+                                    <tr>
+                                        <td>
+                                            <label class="lyear-checkbox checkbox-primary">
+                                                <input name="rules" type="checkbox" class="checkbox-parent ck" dataid=""
+                                                       th:attr="dataid=${treeNode.path}" th:value="${treeNode.id}"
+                                                       th:checked="${treeNode.state}">
+                                                <span th:text="${treeNode.name}"> </span>
+                                            </label>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td class="p-l-40">
+                                            <label class="lyear-checkbox checkbox-primary checkbox-inline"
+                                                   th:each="treeNode2:${treeNode.getChildren()}">
+                                                <input name="rules" type="checkbox" class="checkbox-child ck" dataid=""
+                                                       th:attr="dataid=${treeNode2.path}" th:value="${treeNode2.id}"
+                                                       th:checked="${treeNode2.state}">
+                                                <span th:text="${treeNode2.name}"></span>
+                                            </label>
+                                        </td>
+                                    </tr>
+
+
+                                </div>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<th:block th:include="include::footer"/>
+<script type="text/javascript">
+    $(function () {
+        //动态选择框，上下级选中状态变化
+        $('input.checkbox-parent').on('change', function () {
+            var dataid = $(this).attr("dataid");
+            $('input[dataid^=' + dataid + '-]').prop('checked', $(this).is(':checked'));
+        });
+        $('input.checkbox-child').on('change', function () {
+            var dataid = $(this).attr("dataid");
+            dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+            var parent = $('input[dataid=' + dataid + ']');
+            if ($(this).is(':checked')) {
+                parent.prop('checked', true);
+                //循环到顶级
+                while (dataid.lastIndexOf("-") != 2) {
+                    dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+                    parent = $('input[dataid=' + dataid + ']');
+                    parent.prop('checked', true);
+                }
+            } else {
+                //父级
+                if ($('input[dataid^=' + dataid + '-]:checked').length == 0) {
+                    parent.prop('checked', false);
+                    //循环到顶级
+                    while (dataid.lastIndexOf("-") != 2) {
+                        dataid = dataid.substring(0, dataid.lastIndexOf("-"));
+                        parent = $('input[dataid=' + dataid + ']');
+                        if ($('input[dataid^=' + dataid + '-]:checked').length == 0) {
+                            parent.prop('checked', false);
+                        }
+                    }
+                }
+            }
+        });
+    });
+
+    /**
+     * 全选
+     */
+    function quanxuan() {
+        var aa = document.getElementsByName("rules");
+        for (var i = 0; i < aa.length; i++) {
+            aa[i].checked = true;
+        }
+    }
+
+    /**
+     * 取消全选
+     */
+    function quxiao() {
+        var aa = document.getElementsByName("rules");
+        for (var i = 0; i < aa.length; i++) {
+            aa[i].checked = false;
+        }
+    }
+
+    $('#save').on('click', function () {
+        console.log($('#data_form').serialize());
+        $.ajax({
+            url: '[[@{/sys/role/assign}]]',
+            type: 'put',
+            data: $('#data_form').serialize(),
+            dataType: 'json',
+            success: function (response) {
+                if (response.code == 0) {
+                    layer.msg(response.msg + '，返回资源列表', {icon: 1, time: 1000, offset: 't'});
+                    //跳转到资源管理的初始化页面
+                    //window.location.href = '[[@{/sys/resource/index}]]';
+                    setTimeout("window.location.href='[[@{/sys/role/index}]]'", 1000);
+                } else {
+                    layer.alert(response.msg, {icon: 5, offset: 't'});
+                }
+            }
+        })
+    });
+</script>
+</body>
+</html>

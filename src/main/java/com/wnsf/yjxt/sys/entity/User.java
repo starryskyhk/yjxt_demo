@@ -1,6 +1,8 @@
 package com.wnsf.yjxt.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -9,6 +11,7 @@ import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -29,6 +32,7 @@ public class User implements Serializable {
     /**
      * 学号/工号
      */
+    @TableId(value = "user_id",type = IdType.INPUT)
     private Integer userId;
 
     /**
@@ -91,7 +95,8 @@ public class User implements Serializable {
     private String year;
     @TableField(exist = false)
     private String type;
-
-
-
+    @TableField(exist = false)
+    private String roleId;
+    @TableField(exist = false)
+    private String name;
 }

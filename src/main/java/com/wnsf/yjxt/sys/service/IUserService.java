@@ -3,8 +3,11 @@ package com.wnsf.yjxt.sys.service;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.wnsf.yjxt.common.model.Select2;
 import com.wnsf.yjxt.sys.entity.User;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -33,4 +36,39 @@ public interface IUserService extends IService<User> {
      * @return
      */
     User getStudentInfoById(String userId);
+
+    /**
+     * 获取所有管理员的信息
+     * @return
+     */
+    List<User> getAdminList();
+
+    /**
+     * 删除管理员信息
+     * @param userId
+     * @return
+     */
+    Boolean removeByAdminId(Integer userId);
+
+    /**
+     * 获取一个管理员的信息
+     * @param id
+     * @return
+     */
+    User getAdminById(Integer id);
+
+    /**
+     * select2初始化
+     * @param id
+     * @return
+     */
+    List<Select2> select2List(Integer id);
+
+    Boolean savaUserAndRoleids(User user,String[] roleds);
+
+    Boolean updateUserAndRoleids(User user,String[] roleds);
+
+    Boolean resetUserPassword(Integer userId);
+
+
 }

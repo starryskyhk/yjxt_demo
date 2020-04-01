@@ -1,9 +1,13 @@
 package com.wnsf.yjxt.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -29,6 +33,7 @@ public class RoleResource implements Serializable {
      * 主键
      */
     @TableId(value = "id", type = IdType.AUTO)
+    @JsonIgnore
     private Integer id;
 
     /**
@@ -39,7 +44,23 @@ public class RoleResource implements Serializable {
     /**
      * 资源id
      */
+    @JsonProperty("id")
     private Integer resourceId;
-
+    /**
+     * 资源父id
+     */
+    @TableField(exist =false)
+    @JsonProperty("pId")
+    private Integer parentId;
+    /**
+     * 资源名字
+     */
+    @TableField(exist =false)
+    private String name;
+    /**
+     * 是否拥有当前资源
+     */
+    @TableField(exist =false)
+    private Boolean checked = false;
 
 }

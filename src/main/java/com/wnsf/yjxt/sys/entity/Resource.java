@@ -1,5 +1,6 @@
 package com.wnsf.yjxt.sys.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -84,6 +85,16 @@ public class Resource implements Serializable {
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime updateTime;
+    /**
+    * @Description: 状态
+    * @Param:
+    * @return:
+    * @Author: 陈啧啧
+    * @Date: 2020/4/1
+    */
+    private Integer status = 0;
+    @TableField(exist = false)
+    private Integer roleId;
 
 
 }

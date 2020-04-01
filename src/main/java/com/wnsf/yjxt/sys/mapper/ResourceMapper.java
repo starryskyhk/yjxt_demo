@@ -1,5 +1,6 @@
 package com.wnsf.yjxt.sys.mapper;
 
+import com.wnsf.yjxt.common.model.TreeNode;
 import com.wnsf.yjxt.sys.entity.Resource;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Component;
@@ -21,4 +22,17 @@ public interface ResourceMapper extends BaseMapper<Resource> {
      * @return
      */
     List<Resource> list();
+
+    /**
+     * 获取当前角色拥有的资源
+     * @param id
+     * @return
+     */
+    List<Resource> getRoleResource(Integer id);
+
+    /**
+     * 获取资源列表
+     * @return
+     */
+    List<Resource> getResourceList();
 }

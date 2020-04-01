@@ -1,10 +1,14 @@
 package com.wnsf.yjxt.sys.service.impl;
 
+import com.wnsf.yjxt.sys.entity.Role;
 import com.wnsf.yjxt.sys.entity.UseRole;
 import com.wnsf.yjxt.sys.mapper.UseRoleMapper;
 import com.wnsf.yjxt.sys.service.IUseRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * <p>
@@ -17,5 +21,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UseRoleServiceImpl extends ServiceImpl<UseRoleMapper, UseRole> implements IUseRoleService {
+    @Autowired
+    private UseRoleMapper useRoleMapper;
+    @Override
+    public List<UseRole> getUserHasRoleList(Integer userId) {
+        return useRoleMapper.getUserHasRoleList(userId);
+    }
 
 }

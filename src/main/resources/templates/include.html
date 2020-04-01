@@ -1,0 +1,54 @@
+<!--通用css-->
+<head th:fragment=header(title)>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title th:text="${title}"></title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
+    <link th:href="@{/css/animate.css}" rel="stylesheet">
+    <link th:href="@{/css/style.min.css}" rel="stylesheet">
+    <link th:href="@{/js/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet">
+</head>
+<!--通用js-->
+<div th:fragment="footer">
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/main.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/zeze.js}"></script>
+    <!--boostrap表格-->
+    <script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table-zh-CN.min.js}"></script>
+    <!--弹出层-->
+    <script type="text/javascript" th:src="@{/lib/layer/layer.js}"></script>
+    <!--滚动条美化-->
+    <script type="text/javascript" th:src="@{/js/perfect-scrollbar.min.js}"></script>
+    <!-- jquery-validate 表单验证插件 -->
+    <script type="text/javascript" th:src="@{/lib/validate/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/validate/messages_zh.min.js}"></script>
+    <script type="text/javascript" th:src="@{/lib/validate/jquery.validate.extend.js}"></script>
+</div>
+
+<!-- ztree树插件 -->
+<div th:fragment="ztree-css">
+    <link th:href="@{/lib/ztree/css/metro/zTreeStyle.css}" rel="stylesheet"/>
+</div>
+<div th:fragment="ztree-js">
+    <script th:src="@{/lib/ztree/js/jquery.ztree.all-3.5.js}"></script>
+</div>
+<!-- select2下拉框插件 -->
+<div th:fragment="select2-css">
+    <link th:href="@{/lib/select2/select2.css}" rel="stylesheet"/>
+    <link th:href="@{/lib/select2/select2-bootstrap.css}" rel="stylesheet"/>
+</div>
+<!--select2下拉框js-->
+<div th:fragment="select2-js">
+    <script th:src="@{/lib/select2/select2.min.js}"></script>
+</div>
+<!--boostrap-table行内编辑器-->
+<div th:fragment="bootstrap3-editbable">
+    <link th:href="@{/js/x-editable/1.5.1/bootstrap3-editable/css/bootstrap-editable.min.css}" rel="stylesheet">
+    <script type="text/javascript" th:src="@{/js/x-editable/1.5.1/bootstrap3-editable/js/bootstrap-editable.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/bootstrap-table/extensions/editable/bootstrap-table-editable.min.js}"></script>
+</div>

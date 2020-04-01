@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.wnsf.yjxt.sys.mapper.RoleMapper">
-
+    <select id="getName" resultType="java.lang.String" parameterType="java.lang.Integer">
+        SELECT
+            name
+        FROM
+            sys_resource
+        where
+            resource_id =#{id}
+    </select>
+    <select id="getResource" resultType="com.wnsf.yjxt.sys.entity.RoleResource" parameterType="java.lang.Integer">
+        SELECT
+            t2.resource_id,
+            t2.name,
+            t1.role_id,
+            t2.parent_id
+        FROM
+                sys_resource t2
+        LEFT JOIN
+            sys_role_resource t1
+        ON
+            t1.resource_id = t2.resource_id
+            AND t1.role_id = #{id}
+            ORDER BY t2.order_num
+    </select>
 </mapper>

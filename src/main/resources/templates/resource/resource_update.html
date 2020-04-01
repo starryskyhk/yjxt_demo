@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org" >
+<base th:href="@{/}">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<title>分页 - 光年(Light Year Admin)后台管理系统模板</title>
+	<link rel="icon" href="favicon.ico" type="image/ico">
+	<meta name="keywords" content="LightYear,光年,后台模板,后台管理系统,光年HTML模板">
+	<meta name="description" content="LightYear是一个基于Bootstrap v3.3.7的后台管理系统的HTML模板。">
+	<meta name="author" content="yinqi">
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+	<link th:href="@{/css/materialdesignicons.min.css}" rel="stylesheet">
+	<link th:href="@{/css/animate.css}" rel="stylesheet">
+	<link th:href="@{/css/style.min.css}" rel="stylesheet">
+	<link th:href="@{/js/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet">
+	<link th:href="@{js/fontIconPicker/css/jquery.fonticonpicker.min.css}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" th:href="@{js/fontIconPicker/themes/bootstrap-theme/jquery.fonticonpicker.bootstrap.min.css}" />
+</head>
+<body>
+<div class="container-fluid p-t-15">
+	<div class="row">
+
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-header">
+					<h4>添加资源</h4>
+				</div>
+
+				<div class="card-body">
+
+					<form class="form-horizontal"  method="post" onsubmit="return false;" id="data_form">
+						<input class="form-control" type="hidden" name="parentId" th:value="${resource.getParentId()}">
+						<input class="form-control" type="hidden" name="resourceId" th:value="${resource.getResourceId()}">
+						<div class="form-group">
+							<label class="col-md-3 control-label" >上级资源</label>
+							<div class="col-md-7">
+								<input class="form-control" type="text" name="1111" th:value="${parentName}" readonly>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" >资源名称</label>
+							<div class="col-md-7">
+								<input class="form-control" type="text"   placeholder="请输入角色名字.."  name="name" th:value="${resource.getName()}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" >资源URL</label>
+							<div class="col-md-7">
+								<input class="form-control" type="text"  name="url" th:value="${resource.getUrl()}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" >权限名称</label>
+							<div class="col-md-7">
+								<input class="form-control" type="text" name="permission" th:value="${resource.getPermission()}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" >资源类型</label>
+							<div class="col-md-7">
+								<select name="type" class="form-control" id="type" >
+									<option th:selected="${resource.type == '0'}" value="0" >目录</option>
+									<option th:selected="${resource.type == '1'}" value="1" >菜单</option>
+									<option th:selected="${resource.type == '2'}" value="2" >按钮</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" >排序</label>
+							<div class="col-md-7">
+								<input class="form-control" type="text" name="orderNum" th:value="${resource.getOrderNum()}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label" >图标名称</label>
+							<div class="col-md-7">
+								<input type="text" id="icon-example" name="icon"  th:value="${resource.icon}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-9 col-md-offset-3">
+								<button class="btn btn-primary" type="button" onclick="window.history.go(-1);">返回</button>
+								<button class="btn btn-primary" type="reset">重置</button>
+								<button class="btn btn-primary" type="submit" id="save">保存</button>
+								<button class="btn btn-primary" type="button" id="ceshi">测试</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+</div>
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/perfect-scrollbar.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap-table/bootstrap-table-zh-CN.min.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/main.min.js}"></script>
+<script type="text/javascript" th:src="@{js/fontIconPicker/jquery.fonticonpicker.min.js}"></script>
+<script type="text/javascript" th:src="@{/lib/layer/layer.js}"></script>
+<script type="text/javascript" th:src="@{/lib/parsleyjs/parsley.js}"></script>
+<script type="text/javascript" th:src="@{/lib/parsleyjs/zh_cn.js}"></script>
+<script type="text/javascript">
+	//图标
+	jQuery(document).ready(function($) {
+		var font_element = $('#icon-example').fontIconPicker({
+			theme: 'fip-bootstrap'
+		});
+
+		$.ajax({
+			url: '[[@{/js/fontIconPicker/fontjson/materialdesignicons.json}]]',
+			type: 'GET',
+			dataType: 'json'
+		}).done(function(response) {
+
+			var fontello_json_icons = [];
+
+			$.each(response.glyphs, function(i, v) {
+				fontello_json_icons.push( v.css );
+			});
+
+			font_element.setIcons(fontello_json_icons);
+		}).fail(function() {
+			console.error('字体图标配置加载失败');
+
+		});
+
+	});
+
+
+	$('#save').on('click', function () {
+		$.ajax({
+			url: '[[@{/sys/resource}]]',
+			type: 'put',
+			data:$('#data_form').serialize(),
+			dataType: 'json',
+			success: function (response) {
+				if (response.code == 0) {
+					layer.msg(response.msg+'，返回资源列表', {icon: 1, time: 1000, offset: 't'});
+					//跳转到资源管理的初始化页面
+					//window.location.href = '[[@{/sys/resource/index}]]';
+					setTimeout("window.location.href='[[@{/sys/resource/index}]]'",1000);
+				} else {
+					layer.alert(response.msg, {icon: 5, offset: 't'});
+				}
+			}
+		})
+	});
+</script>
+</body>
+</html>
